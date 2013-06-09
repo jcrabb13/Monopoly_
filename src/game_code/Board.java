@@ -2,13 +2,14 @@ package game_code;
 
 public class Board {
 	private Space startSpace;
+	public static final int BOARD_SIZE = 40;
 	
 	public Board() {
 		startSpace = new GoSpace();
 		Space currentSpace = startSpace; 
 		Space nextSpace;
 		
-		for(int i=1; i<40; i++) { 
+		for(int i=1; i<BOARD_SIZE; i++) { 
 			nextSpace = determineNextSpace(i);
 			currentSpace.setNextSpace(nextSpace);
 			currentSpace = nextSpace;

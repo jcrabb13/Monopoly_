@@ -41,7 +41,7 @@ public class LuxuryTaxSpaceTest {
 		EmptySpace startSpace = new EmptySpace();
 		LuxuryTaxSpace testSpace = new LuxuryTaxSpace();
 		startSpace.setNextSpace(testSpace);
-		Player testPlayer = new Player(1, startSpace);
+		Player testPlayer = new Player(startSpace);
 		
 		testPlayer.moveOnePosition();
 		testPlayer.preformLandAction();

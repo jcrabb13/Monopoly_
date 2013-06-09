@@ -23,7 +23,8 @@ public class GoSpaceTest {
 	@Test
 	public void testLandOnGoSpaceGivesMoney() { 
 		Board testGameBoard = new Board();
-		Player testPlayer = new Player(1, testGameBoard.getInitialSpace());
+		Player testPlayer = new Player(testGameBoard.getInitialSpace());
+		
 		for (int i=0; i<39; i++) testPlayer.moveOnePosition();
 
 		testPlayer.moveOnePosition();
@@ -35,7 +36,8 @@ public class GoSpaceTest {
 	@Test
 	public void testPassingGoSpaceGivesMoney() { 
 		Board testGameBoard = new Board();
-		Player testPlayer = new Player(1, testGameBoard.getInitialSpace());
+		Player testPlayer = new Player(testGameBoard.getInitialSpace());
+		
 		for (int i=0; i<39; i++) testPlayer.moveOnePosition();
 
 		testPlayer.takeATurn();

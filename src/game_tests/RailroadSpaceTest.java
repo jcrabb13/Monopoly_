@@ -1,35 +1,36 @@
 package game_tests;
 
-import static org.junit.Assert.*;
-import game_code.*;
-import org.junit.Before;
+import static org.junit.Assert.assertEquals;
+import game_code.Board;
+import game_code.EmptySpace;
+import game_code.MonopolyGame;
+import game_code.Player;
+import game_code.RailroadSpace;
+import game_code.Space;
+
 import org.junit.Test;
 
 public class RailroadSpaceTest {
-	MonopolyGame testGame;
-	
-	@Before
-	public void setUp() throws Exception {
-		testGame = new MonopolyGame(2);
-	}
 	
 	@Test
-	public void testMonopolyGameRailroadsExist() { 
-		Space testSpace = testGame.getGameBoard().getInitialSpace();
+	public void testMonopolyGameHasFourRailroads() {
+		MonopolyGame game = new MonopolyGame(2);
+		Space currentSpace = game.getInitialSpace();
 		
-		for(int i=0; i<40; i++) {
-			if (i == 5) assertTrue(testSpace instanceof game_code.RailroadSpace);
-			if (i == 15) assertTrue(testSpace instanceof game_code.RailroadSpace);
-			if (i == 25) assertTrue(testSpace instanceof game_code.RailroadSpace);
-			if (i == 35) assertTrue(testSpace instanceof game_code.RailroadSpace);
-			testSpace = testSpace.getNextSpace();
+		int numberOfRailroads = 0;
+		
+		for(int i=0; i<Board.BOARD_SIZE; i++) {
+			if (currentSpace instanceof game_code.RailroadSpace) numberOfRailroads++;
+			currentSpace = currentSpace.getNextSpace();
 		}
+	
+		assertEquals(4, numberOfRailroads);
 	}
 	
 	@Test
 	public void testMonopolyGameBuyingRailroadSetsOwner() {
 		RailroadSpace testSpace = new RailroadSpace("Shortline");
-		Player testPlayer = testGame.getListOfPlayers().get(0);
+		Player testPlayer = new Player(new EmptySpace());
 		
 		testSpace.interactWithLandAction(testPlayer);
 		
@@ -39,7 +40,7 @@ public class RailroadSpaceTest {
 	@Test
 	public void testMonopolyGameBuyingRailroadNotEnoughMoney() {
 		RailroadSpace testSpace = new RailroadSpace("Shortline");
-		Player testPlayer = testGame.getListOfPlayers().get(0);
+		Player testPlayer = new Player(new EmptySpace());
 		testPlayer.changeMyMoney(-1400);
 		
 		testSpace.interactWithLandAction(testPlayer);
@@ -50,7 +51,7 @@ public class RailroadSpaceTest {
 	@Test
 	public void testMonopolyGameBuyingRailroadChargesMoney() {
 		RailroadSpace testSpace = new RailroadSpace("Shortline");
-		Player testPlayer = testGame.getListOfPlayers().get(0);
+		Player testPlayer = new Player(new EmptySpace());
 		
 		testSpace.interactWithLandAction(testPlayer);
 		
@@ -60,13 +61,13 @@ public class RailroadSpaceTest {
 	@Test
 	public void testMonopolyGamePayingRentRailroad() {
 		RailroadSpace testSpace = new RailroadSpace("Shortline");
-		Player ownerPlayer = testGame.getListOfPlayers().get(0);
-		Player rentingPlayer = testGame.getListOfPlayers().get(1);
+		Player owner = new Player(new EmptySpace());
+		Player renter = new Player(new EmptySpace());
 		
-		testSpace.interactWithLandAction(ownerPlayer);
-		testSpace.interactWithLandAction(rentingPlayer);
+		testSpace.interactWithLandAction(owner);
+		testSpace.interactWithLandAction(renter);
 		
-		assertEquals(1450, rentingPlayer.getMyMoney());
+		assertEquals(1450, renter.getMyMoney());
 	}
 	
 	@Test
@@ -74,12 +75,12 @@ public class RailroadSpaceTest {
 		RailroadSpace testRailroadOne = new RailroadSpace("Shortline");
 		RailroadSpace testRailroadTwo = new RailroadSpace("B&O");
 		
-		Player ownerPlayer = testGame.getListOfPlayers().get(0);
+		Player owner = new Player(new EmptySpace());
 		
-		testRailroadOne.interactWithLandAction(ownerPlayer);
-		testRailroadTwo.interactWithLandAction(ownerPlayer);
+		testRailroadOne.interactWithLandAction(owner);
+		testRailroadTwo.interactWithLandAction(owner);
 		
-		assertEquals(1100, ownerPlayer.getMyMoney());
+		assertEquals(1100, owner.getMyMoney());
 	}
 	
 	@Test
@@ -87,17 +88,17 @@ public class RailroadSpaceTest {
 		RailroadSpace testRailroadOne = new RailroadSpace("Shortline");
 		RailroadSpace testRailroadTwo = new RailroadSpace("B&O");
 		
-		Player ownerPlayer = testGame.getListOfPlayers().get(0);
-		Player rentingPlayer = testGame.getListOfPlayers().get(1);
+		Player owner = new Player(new EmptySpace());;
+		Player renter = new Player(new EmptySpace());
 		
-		testRailroadOne.interactWithLandAction(ownerPlayer);
-		testRailroadTwo.interactWithLandAction(ownerPlayer);
+		testRailroadOne.interactWithLandAction(owner);
+		testRailroadTwo.interactWithLandAction(owner);
 
-		testRailroadTwo.interactWithLandAction(rentingPlayer);
+		testRailroadTwo.interactWithLandAction(renter);
 		
 		
 		
-		assertEquals(1400, rentingPlayer.getMyMoney());
-		assertEquals(1200, ownerPlayer.getMyMoney());
+		assertEquals(1400, renter.getMyMoney());
+		assertEquals(1200, owner.getMyMoney());
 	}
 }

@@ -48,7 +48,7 @@ public class PlayerTest {
 	@Test
 	public void testMonopolyGamePlayerStartSpace() { //Each players starts on space 0
 		for(int i = 0; i<listOfPlayers.size(); i++) {
-			assertEquals(listOfPlayers.get(i).getCurrentPosition(), testGame.getGameBoard().getInitialSpace());
+			assertEquals(listOfPlayers.get(i).getCurrentPosition(), testGame.getInitialSpace());
 		}		
 	}
 

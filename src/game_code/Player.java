@@ -10,7 +10,7 @@ public class Player {
 	private int myMoney;
 	private Vector<RailroadSpace> railroadsOwned = new Vector<RailroadSpace>();
 	
-	public Player(int playerNum, Space currentPosition) {
+	public Player(Space currentPosition) {
 		this.currentPosition = currentPosition;
 		myMoney = 1500;
 	}	
