@@ -15,8 +15,8 @@ public class BoardTest {
 	
 	@Test
 	public void testMonopolyGameBoardWrapAround() { 
-		Space initialSpace = board.getInitialSpace();
-		Space currentSpace = initialSpace;
+		GeneralSpace initialSpace = board.getInitialSpace();
+		GeneralSpace currentSpace = initialSpace;
 		
 		for(int i = 0; i<Board.BOARD_SIZE; i++) {
 			currentSpace = currentSpace.getNextSpace();

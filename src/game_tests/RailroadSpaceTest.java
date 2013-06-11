@@ -1,12 +1,15 @@
 package game_tests;
 
 import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+
 import game_code.Board;
 import game_code.EmptySpace;
 import game_code.MonopolyGame;
 import game_code.Player;
 import game_code.RailroadSpace;
-import game_code.Space;
+import game_code.GeneralSpace;
 
 import org.junit.Test;
 
@@ -15,7 +18,7 @@ public class RailroadSpaceTest {
 	@Test
 	public void testMonopolyGameHasFourRailroads() {
 		MonopolyGame game = new MonopolyGame(2);
-		Space currentSpace = game.getInitialSpace();
+		GeneralSpace currentSpace = game.getInitialSpace();
 		
 		int numberOfRailroads = 0;
 		
@@ -34,7 +37,7 @@ public class RailroadSpaceTest {
 		
 		testSpace.interactWithLandAction(testPlayer);
 		
-		assertEquals(testPlayer, testSpace.getRailroadOwner());
+		assertEquals(testPlayer, testSpace.getOwner());
 	}
 	
 	@Test
@@ -45,7 +48,7 @@ public class RailroadSpaceTest {
 		
 		testSpace.interactWithLandAction(testPlayer);
 		
-		assertEquals(null, testSpace.getRailroadOwner());
+		assertEquals(null, testSpace.getOwner());
 	}
 	
 	@Test
@@ -61,6 +64,9 @@ public class RailroadSpaceTest {
 	@Test
 	public void testMonopolyGamePayingRentRailroad() {
 		RailroadSpace testSpace = new RailroadSpace("Shortline");
+		ArrayList<RailroadSpace> railroadGroup = new ArrayList<RailroadSpace>();
+		railroadGroup.add(testSpace);
+		testSpace.setGroup(railroadGroup);
 		Player owner = new Player(new EmptySpace());
 		Player renter = new Player(new EmptySpace());
 		
@@ -84,9 +90,14 @@ public class RailroadSpaceTest {
 	}
 	
 	@Test
-	public void testMonopolyGamePayingRentRailrdddoad() {
+	public void testMonopolyGamePayingRentRailroadMultipleOwner() {
 		RailroadSpace testRailroadOne = new RailroadSpace("Shortline");
 		RailroadSpace testRailroadTwo = new RailroadSpace("B&O");
+		ArrayList<RailroadSpace> railroadGroup = new ArrayList<RailroadSpace>();
+		railroadGroup.add(testRailroadOne);
+		railroadGroup.add(testRailroadTwo);
+		testRailroadOne.setGroup(railroadGroup);
+		testRailroadTwo.setGroup(railroadGroup);
 		
 		Player owner = new Player(new EmptySpace());;
 		Player renter = new Player(new EmptySpace());

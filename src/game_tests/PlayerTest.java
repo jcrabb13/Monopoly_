@@ -1,14 +1,14 @@
 package game_tests;
 
 import static org.junit.Assert.*;
-import java.util.Vector;
+import java.util.ArrayList;
 import game_code.*;
 import org.junit.Before;
 import org.junit.Test;
 
 public class PlayerTest {
 	MonopolyGame testGame;
-	Vector<Player> listOfPlayers;
+	ArrayList<Player> listOfPlayers;
 	@Before
 	public void setUp() throws Exception {
 		testGame = new MonopolyGame(2);

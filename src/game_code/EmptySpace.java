@@ -1,6 +1,6 @@
 package game_code;
 
-public class EmptySpace extends AbstractSpace {	
+public class EmptySpace extends AbstractGeneralSpace {	
 	
 	public EmptySpace() { super() ; }
 }

@@ -1,17 +1,17 @@
 package game_code;
 
-public class RailroadSpace extends AbstractSpace{
-	private String railroadName;
-	private Player railroadOwner;
+import java.util.ArrayList;
+
+public class RailroadSpace extends AbstractGeneralSpace{	
+	private ArrayList<RailroadSpace> mySpaceGroup;
+	String propertyName;
+	Player propertyOwner;
 	
-	public RailroadSpace(String railroadName) {
-		this.railroadName = railroadName;
-		this.railroadOwner = null;
+	public RailroadSpace(String propertyName) {
+		this.propertyName = propertyName;
 	}
 	
-	public String getRailroadName() {return this.railroadName;}
-	
-	public Player getRailroadOwner() {return this.railroadOwner;}
+	public void setGroup(ArrayList<RailroadSpace> mySpaceGroup) {this.mySpaceGroup = mySpaceGroup;}
 	
 	@Override
 	public void interactWithLandAction(Player player) {
@@ -25,20 +25,31 @@ public class RailroadSpace extends AbstractSpace{
 	}
 	
 	private boolean isThisRailroadOwned() {
-		if (railroadOwner == null) return false;
+		if (propertyOwner == null) return false;
 		else return true;
-	}
-	
+	}	
 	
 	private void chargePlayerRent(Player player) {
-		int totalRent = 50 * railroadOwner.getRailroadsOwned().size();
+		int totalRent = 50 * getTotalGroupSpacesOwned();
 		player.changeMyMoney(-1*totalRent);
-		railroadOwner.changeMyMoney(totalRent);
+		propertyOwner.changeMyMoney(totalRent);
 	}	
 
 	private void buyThisRailroad(Player player) {
 		player.changeMyMoney(-200);
-		railroadOwner = player;
-		player.addARailRoad(this);
+		propertyOwner = player;
 	}
+	
+	private int getTotalGroupSpacesOwned() {
+		int totalSpaceOwned = 0;
+		for(int i=0; i<mySpaceGroup.size(); i++) {
+			if (mySpaceGroup.get(i).getOwner() == propertyOwner) totalSpaceOwned++;
+		}
+		
+		return totalSpaceOwned;
+	}
+	
+	public void setOwner(Player owner) {this.propertyOwner = owner;} 
+	
+	public Player getOwner() { return propertyOwner;}
 }

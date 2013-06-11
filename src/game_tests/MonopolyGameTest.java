@@ -1,7 +1,7 @@
 package game_tests;
 
 import static org.junit.Assert.*;
-import java.util.Vector;
+import java.util.ArrayList;
 import game_code.*;
 
 import org.junit.Before;
@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class MonopolyGameTest {
 	MonopolyGame testGame;
-	Vector<Player> listOfPlayers;
+	ArrayList<Player> listOfPlayers;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -19,10 +19,10 @@ public class MonopolyGameTest {
 
 	@Test
 	public void testTakeATurn() { 
-		Space beforePosition = listOfPlayers.get(0).getCurrentPosition();
+		GeneralSpace beforePosition = listOfPlayers.get(0).getCurrentPosition();
 		
 		listOfPlayers.get(0).takeATurn();
-		Space afterPosition = listOfPlayers.get(0).getCurrentPosition();
+		GeneralSpace afterPosition = listOfPlayers.get(0).getCurrentPosition();
 		
 		assertNotSame(afterPosition, beforePosition);
 	}

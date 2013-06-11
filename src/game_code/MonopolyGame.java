@@ -1,8 +1,8 @@
 package game_code;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class MonopolyGame {	
-	private Vector<Player> listOfPlayers;
+	private ArrayList<Player> listOfPlayers;
 	private Board gameBoard;
 	
 	public MonopolyGame(int numberOfPlayers) {	
@@ -11,7 +11,7 @@ public class MonopolyGame {
 	}
 	
 	public void createPlayers(int numberOfPlayers) {
-		listOfPlayers = new Vector<Player>(numberOfPlayers);
+		listOfPlayers = new ArrayList<Player>(numberOfPlayers);
 		
 		for(int i=0; i<numberOfPlayers; i++) {
 			listOfPlayers.add(i, new Player(gameBoard.getInitialSpace()));
@@ -30,7 +30,7 @@ public class MonopolyGame {
 		}
 	}
 	
-	public Vector<Player> getListOfPlayers() {return listOfPlayers;}
+	public ArrayList<Player> getListOfPlayers() {return listOfPlayers;}
 	
-	public Space getInitialSpace() {return gameBoard.getInitialSpace();}
+	public GeneralSpace getInitialSpace() {return gameBoard.getInitialSpace();}
 }
