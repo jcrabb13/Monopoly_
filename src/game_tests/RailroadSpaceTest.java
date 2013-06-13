@@ -93,6 +93,7 @@ public class RailroadSpaceTest {
 	public void testMonopolyGamePayingRentRailroadMultipleOwner() {
 		RailroadSpace testRailroadOne = new RailroadSpace("Shortline");
 		RailroadSpace testRailroadTwo = new RailroadSpace("B&O");
+		
 		ArrayList<RailroadSpace> railroadGroup = new ArrayList<RailroadSpace>();
 		railroadGroup.add(testRailroadOne);
 		railroadGroup.add(testRailroadTwo);
@@ -105,8 +106,7 @@ public class RailroadSpaceTest {
 		testRailroadOne.interactWithLandAction(owner);
 		testRailroadTwo.interactWithLandAction(owner);
 
-		testRailroadTwo.interactWithLandAction(renter);
-		
+		testRailroadTwo.interactWithLandAction(renter);		
 		
 		
 		assertEquals(1400, renter.getMyMoney());

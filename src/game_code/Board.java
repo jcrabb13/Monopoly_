@@ -4,39 +4,22 @@ import java.util.ArrayList;
 
 public class Board {
 	private GeneralSpace startSpace;
-	private ArrayList<GeneralSpace> boardSpaces;
 	private ArrayList<RailroadSpace> railroadSpaces = new ArrayList<RailroadSpace>();
+	
 	public static final int BOARD_SIZE = 40;
 	
 	public Board() {
-		boardSpaces = createSpaces();
-		linkSpacesTogether(boardSpaces);
+		createBoard();
 		linkSpacesToGroup(railroadSpaces);
 	}
 	
-	private ArrayList<GeneralSpace> createSpaces() {
-		ArrayList<GeneralSpace> boardSpaces = new ArrayList<GeneralSpace>(40);
+	private void createBoard() {
+		startSpace  = determineNextSpace(0);
+		GeneralSpace currentSpace = startSpace;
 		
-		GeneralSpace currentSpace;
-		
-		for(int i=0; i<BOARD_SIZE; i++) { 
-			currentSpace = determineNextSpace(i);
-			boardSpaces.add(currentSpace);
-		}
-		
-		return boardSpaces;
-	}
-	
-	private void linkSpacesTogether(ArrayList<GeneralSpace> boardSpaces) {
-		GeneralSpace startSpace = boardSpaces.get(0);
-		this.startSpace = startSpace;
-		GeneralSpace currentSpace = startSpace; 
-		GeneralSpace nextSpace;
-		
-		for(int i=1; i<BOARD_SIZE; i++) { 
-			nextSpace = boardSpaces.get(i);
-			currentSpace.setNextSpace(nextSpace);
-			currentSpace = nextSpace;
+		for(int i=1; i<BOARD_SIZE; i++) {
+			currentSpace.setNextSpace(determineNextSpace(i));
+			currentSpace = currentSpace.getNextSpace();
 		}
 		
 		currentSpace.setNextSpace(startSpace);

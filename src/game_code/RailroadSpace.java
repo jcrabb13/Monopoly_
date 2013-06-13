@@ -10,12 +10,10 @@ public class RailroadSpace extends AbstractGeneralSpace{
 	public RailroadSpace(String propertyName) {
 		this.propertyName = propertyName;
 	}
-	
-	public void setGroup(ArrayList<RailroadSpace> mySpaceGroup) {this.mySpaceGroup = mySpaceGroup;}
-	
+		
 	@Override
 	public void interactWithLandAction(Player player) {
-		if (isThisRailroadOwned()) {
+		if (propertyOwner != null) {
 			chargePlayerRent(player);
 		} else {
 			if(player.getMyMoney() >= 200) {
@@ -23,14 +21,9 @@ public class RailroadSpace extends AbstractGeneralSpace{
 			}
 		}
 	}
-	
-	private boolean isThisRailroadOwned() {
-		if (propertyOwner == null) return false;
-		else return true;
-	}	
-	
+		
 	private void chargePlayerRent(Player player) {
-		int totalRent = 50 * getTotalGroupSpacesOwned();
+		int totalRent = 50 * this.getTotalGroupSpacesOwned();
 		player.changeMyMoney(-1*totalRent);
 		propertyOwner.changeMyMoney(totalRent);
 	}	
@@ -42,12 +35,14 @@ public class RailroadSpace extends AbstractGeneralSpace{
 	
 	private int getTotalGroupSpacesOwned() {
 		int totalSpaceOwned = 0;
-		for(int i=0; i<mySpaceGroup.size(); i++) {
-			if (mySpaceGroup.get(i).getOwner() == propertyOwner) totalSpaceOwned++;
+		for(RailroadSpace rrSpace : mySpaceGroup) {
+			if (rrSpace.getOwner() == propertyOwner) totalSpaceOwned++;
 		}
 		
 		return totalSpaceOwned;
 	}
+	
+	public void setGroup(ArrayList<RailroadSpace> mySpaceGroup) {this.mySpaceGroup = mySpaceGroup;}
 	
 	public void setOwner(Player owner) {this.propertyOwner = owner;} 
 	
