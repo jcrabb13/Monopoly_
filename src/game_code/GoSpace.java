@@ -1,8 +1,6 @@
 package game_code;
 
-public class GoSpace extends GeneralSpace{
-	public GoSpace() {}
-	
+public class GoSpace extends GeneralSpace{	
 	@Override
 	public void interactWithLandAction(Player player) {player.changeMyMoney(200);}
 	
