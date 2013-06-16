@@ -1,12 +1,20 @@
 package game_code;
 
-public interface GeneralSpace {
+public class GeneralSpace implements Space{	
+	private Space nextSpace;
+
+	public GeneralSpace() {}
 	
-	void setNextSpace(GeneralSpace nextSpace);
-		
-	GeneralSpace getNextSpace();
-	 
-	void interactWithLandAction(Player player);
+	public void setNextSpace(Space nextSpace) {
+		this.nextSpace = nextSpace;
+	}
+
+	public Space getNextSpace() {
+		return nextSpace;
+	}
+
+	public void interactWithLandAction(Player player) {}
+
+	public void interactWithPassAction(Player player) {}
 	
-	void interactWithPassAction(Player player);
 }

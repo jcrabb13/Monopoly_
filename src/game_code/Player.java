@@ -2,13 +2,13 @@ package game_code;
 
 import java.util.Random;
 
-public class Player implements GamePlayerInteraction, SpacePlayerInteraction, InternalPlayerInteraction {
+public class Player {
 	static Random randomGenerator = new Random(System.nanoTime());
 	
-	private GeneralSpace currentPosition;
+	private Space currentPosition;
 	private int myMoney;
 	
-	public Player(GeneralSpace currentPosition) {
+	public Player(Space currentPosition) {
 		this.currentPosition = currentPosition;
 		myMoney = 1500;
 	}	
@@ -35,7 +35,7 @@ public class Player implements GamePlayerInteraction, SpacePlayerInteraction, In
 	
 	public int getMyMoney() {return myMoney;}
 	
-	public GeneralSpace getCurrentPosition() {return currentPosition;}	
+	public Space getCurrentPosition() {return currentPosition;}	
 	
 	public int getDiceRoll() {return (randomGenerator.nextInt(6) + 1);}
 }

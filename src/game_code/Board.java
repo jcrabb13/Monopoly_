@@ -3,7 +3,7 @@ package game_code;
 import java.util.ArrayList;
 
 public class Board {
-	private GeneralSpace startSpace;
+	private Space startSpace;
 	private ArrayList<RailroadSpace> railroadSpaces = new ArrayList<RailroadSpace>();
 	private ArrayList<ArrayList<PropertySpace>> propertyGroups = new ArrayList<ArrayList<PropertySpace>>();
 	
@@ -17,7 +17,7 @@ public class Board {
 	
 	private void createBoard() {
 		startSpace  = determineNextSpace(1);
-		GeneralSpace currentSpace = startSpace;
+		Space currentSpace = startSpace;
 		
 		for(int i=2; i<=BOARD_SIZE; i++) {
 			currentSpace.setNextSpace(determineNextSpace(i));
@@ -27,7 +27,7 @@ public class Board {
 		currentSpace.setNextSpace(startSpace);
 	}
 	
-	private GeneralSpace determineNextSpace(int spaceNumber) {
+	private Space determineNextSpace(int spaceNumber) {
 		if (spaceNumber == 1) return new GoSpace();
 		else if (spaceNumber == 2) return createPropertySpace("Mediterranean Ave", 60, 2 ,0);
 		else if (spaceNumber == 4) return createPropertySpace("Baltic Ave",60,4,0);
@@ -57,16 +57,16 @@ public class Board {
 		else if (spaceNumber == 36) return createRailroadSpace("Pennsylvania");
 		else if (spaceNumber == 38) return createPropertySpace("Park Place", 350, 35,7);
 		else if (spaceNumber == 40) return createPropertySpace("Boardwalk", 400, 50,7);
-		else return new EmptySpace();
+		else return new GeneralSpace();
 	}
 	
-	private GeneralSpace createPropertySpace(String propertyName, int propertyCost, int rentCost, int groupNumber) {
+	private Space createPropertySpace(String propertyName, int propertyCost, int rentCost, int groupNumber) {
 		PropertySpace propertySpace = new PropertySpace(propertyName, propertyCost, rentCost);
 		propertyGroups.get(groupNumber).add(propertySpace);
 		return propertySpace;		
 	}
 	
-	private GeneralSpace createRailroadSpace(String spaceName) {
+	private Space createRailroadSpace(String spaceName) {
 		RailroadSpace rrSpace = new RailroadSpace(spaceName);
 		railroadSpaces.add(rrSpace);
 		return rrSpace;
@@ -91,5 +91,5 @@ public class Board {
 		}
 	}
 	
-	public GeneralSpace getInitialSpace() {return startSpace;}
+	public Space getInitialSpace() {return startSpace;}
 }

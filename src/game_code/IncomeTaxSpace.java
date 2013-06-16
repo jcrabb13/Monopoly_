@@ -1,7 +1,6 @@
 package game_code;
 
-public class IncomeTaxSpace extends AbstractGeneralSpace {
-	public IncomeTaxSpace() {}
+public class IncomeTaxSpace extends GeneralSpace {
 	
 	@Override
 	public void interactWithLandAction(Player player) {

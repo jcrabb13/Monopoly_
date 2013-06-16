@@ -19,7 +19,7 @@ public class IncomeTaxSpaceTest {
 
 	@Test
 	public void testMonopolyGameIncomeTaxSpaceInBoard() { 
-		GeneralSpace testSpace = listOfPlayers.get(0).getCurrentPosition();
+		Space testSpace = listOfPlayers.get(0).getCurrentPosition();
 		
 		for(int i=0; i<28; i++) {
 			testSpace = testSpace.getNextSpace();
@@ -30,7 +30,7 @@ public class IncomeTaxSpaceTest {
 	
 	@Test
 	public void testIncomeTaxRemoveFromPlayersMoneyTenPercent() { 	
-		GeneralSpace testSpace = listOfPlayers.get(0).getCurrentPosition();
+		Space testSpace = listOfPlayers.get(0).getCurrentPosition();
 		
 		for(int i=0; i<40; i++) {
 			if (i == 28) testSpace.interactWithLandAction(listOfPlayers.get(0));
@@ -42,7 +42,7 @@ public class IncomeTaxSpaceTest {
 	
 	@Test
 	public void testIncomeTaxRemoveFromPlayersMoneyTwoHundred() { 
-		GeneralSpace testSpace = listOfPlayers.get(0).getCurrentPosition();
+		Space testSpace = listOfPlayers.get(0).getCurrentPosition();
 		listOfPlayers.get(0).changeMyMoney(800);
 		
 		for(int i=0; i<40; i++) {

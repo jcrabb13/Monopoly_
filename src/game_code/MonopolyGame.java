@@ -18,8 +18,8 @@ public class MonopolyGame {
 		}
 	}
 	
-	public void runTheGame(int numberOfTurns) {		
-		for(int i=1; i<=numberOfTurns; i++) {
+	public void runTheGame(int numberOfRounds) {		
+		for(int i=1; i<=numberOfRounds; i++) {
 			playARound();
 		}	
 	}
@@ -32,5 +32,5 @@ public class MonopolyGame {
 	
 	public ArrayList<Player> getListOfPlayers() {return listOfPlayers;}
 	
-	public GeneralSpace getInitialSpace() {return gameBoard.getInitialSpace();}
+	public Space getInitialSpace() {return gameBoard.getInitialSpace();}
 }

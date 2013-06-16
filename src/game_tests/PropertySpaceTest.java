@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 import game_code.Board;
-import game_code.GeneralSpace;
+import game_code.Space;
 import game_code.Player;
 import game_code.PropertySpace;
 
@@ -17,7 +17,7 @@ public class PropertySpaceTest {
 	public void testBoardHasCorrectNumberOfPropertySpaces() {
 		Board board = new Board();
 		
-		GeneralSpace currentSpace = board.getInitialSpace();
+		Space currentSpace = board.getInitialSpace();
 		
 		int numberOfProperty = 0;
 		

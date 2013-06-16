@@ -26,7 +26,7 @@ public class LuxuryTaxSpaceTest {
 	
 	@Test
 	public void testMonopolyGameLuxuryTaxSpaceInBoard() { 
-		GeneralSpace testSpace = listOfPlayers.get(0).getCurrentPosition();
+		Space testSpace = listOfPlayers.get(0).getCurrentPosition();
 		
 		for(int i=0; i<40; i++) {
 			if (testSpace instanceof LuxuryTaxSpace) testSpace.interactWithLandAction(listOfPlayers.get(0));
@@ -38,7 +38,7 @@ public class LuxuryTaxSpaceTest {
 	
 	@Test
 	public void testLuxuryTaxRemoveFromPlayersMoney() { 
-		EmptySpace startSpace = new EmptySpace();
+		GeneralSpace startSpace = new GeneralSpace();
 		LuxuryTaxSpace testSpace = new LuxuryTaxSpace();
 		startSpace.setNextSpace(testSpace);
 		Player testPlayer = new Player(startSpace);

@@ -2,7 +2,7 @@ package game_code;
 
 import java.util.ArrayList;
 
-public class RailroadSpace extends AbstractGeneralSpace{	
+public class RailroadSpace extends GeneralSpace{	
 	private ArrayList<RailroadSpace> mySpaceGroup;
 	String propertyName;
 	Player propertyOwner;
