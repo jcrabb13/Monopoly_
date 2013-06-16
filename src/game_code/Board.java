@@ -10,24 +10,24 @@ public class Board {
 	public static final int BOARD_SIZE = 40;
 	
 	public Board() {
-		initializePropertyList();
+		initializePropertyArrayList();
 		createBoard();
-		linkSpacesToGroup();
+		setSpaceGroupOfSpaces();
 	}
 	
 	private void createBoard() {
-		startSpace  = determineNextSpace(1);
+		startSpace = createNextSpace(1);
 		Space currentSpace = startSpace;
 		
 		for(int i=2; i<=BOARD_SIZE; i++) {
-			currentSpace.setNextSpace(determineNextSpace(i));
+			currentSpace.setNextSpace(createNextSpace(i));
 			currentSpace = currentSpace.getNextSpace();
 		}
 		
 		currentSpace.setNextSpace(startSpace);
 	}
 	
-	private Space determineNextSpace(int spaceNumber) {
+	private Space createNextSpace(int spaceNumber) {
 		if (spaceNumber == 1) return new GoSpace();
 		else if (spaceNumber == 2) return createPropertySpace("Mediterranean Ave", 60, 2 ,0);
 		else if (spaceNumber == 4) return createPropertySpace("Baltic Ave",60,4,0);
@@ -72,7 +72,7 @@ public class Board {
 		return rrSpace;
 	}
 	
-	private void linkSpacesToGroup() {
+	private void setSpaceGroupOfSpaces() {
 		for(RailroadSpace space : railroadSpaces) {
 			space.setGroup(railroadSpaces);
 		}
@@ -85,7 +85,7 @@ public class Board {
 		
 	}
 	
-	private void initializePropertyList() {
+	private void initializePropertyArrayList() {
 		for (int i=0; i<8; i++) {
 			propertyGroups.add(new ArrayList<PropertySpace>());
 		}

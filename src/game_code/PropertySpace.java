@@ -3,10 +3,10 @@ package game_code;
 import java.util.ArrayList;
 
 public class PropertySpace extends GeneralSpace {
-	private ArrayList<PropertySpace> mySpaceGroup;
+	private ArrayList<PropertySpace> mySpaceGroup;	
 	String propertyName;
-	Player propertyOwner;
-	int propertyCost, rentCost;
+	private Player propertyOwner;
+	private int propertyCost, rentCost;
 	
 	public PropertySpace(String propertyName, int propertyCost, int rentCost) {
 		this.propertyName = propertyName;
