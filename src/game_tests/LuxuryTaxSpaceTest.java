@@ -29,7 +29,7 @@ public class LuxuryTaxSpaceTest {
 		GeneralSpace testSpace = listOfPlayers.get(0).getCurrentPosition();
 		
 		for(int i=0; i<40; i++) {
-			if (i == 20) testSpace.interactWithLandAction(listOfPlayers.get(0));
+			if (testSpace instanceof LuxuryTaxSpace) testSpace.interactWithLandAction(listOfPlayers.get(0));
 			testSpace = testSpace.getNextSpace();
 		}
 		

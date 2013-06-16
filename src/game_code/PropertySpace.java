@@ -27,7 +27,7 @@ public class PropertySpace extends AbstractGeneralSpace {
 		
 	private void chargePlayerRent(Player player) {
 		int totalRent = rentCost;
-		if (getTotalGroupSpacesOwned() == this.mySpaceGroup.size()) rentCost = rentCost*2;
+		if (getTotalGroupSpacesOwned() == this.mySpaceGroup.size()) totalRent = totalRent*2;
 		player.changeMyMoney(-1*totalRent);
 		propertyOwner.changeMyMoney(totalRent);
 	}	

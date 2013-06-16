@@ -7,7 +7,7 @@ public class Board {
 	private ArrayList<RailroadSpace> railroadSpaces = new ArrayList<RailroadSpace>();
 	private ArrayList<ArrayList<PropertySpace>> propertyGroups = new ArrayList<ArrayList<PropertySpace>>();
 	
-	public static final int BOARD_SIZE = 41;
+	public static final int BOARD_SIZE = 40;
 	
 	public Board() {
 		initializePropertyList();
@@ -16,10 +16,10 @@ public class Board {
 	}
 	
 	private void createBoard() {
-		startSpace  = determineNextSpace(0);
+		startSpace  = determineNextSpace(1);
 		GeneralSpace currentSpace = startSpace;
 		
-		for(int i=1; i<BOARD_SIZE; i++) {
+		for(int i=2; i<=BOARD_SIZE; i++) {
 			currentSpace.setNextSpace(determineNextSpace(i));
 			currentSpace = currentSpace.getNextSpace();
 		}
@@ -28,7 +28,7 @@ public class Board {
 	}
 	
 	private GeneralSpace determineNextSpace(int spaceNumber) {
-		if (spaceNumber == 0) return new GoSpace();
+		if (spaceNumber == 1) return new GoSpace();
 		else if (spaceNumber == 2) return createPropertySpace("Mediterranean Ave", 60, 2 ,0);
 		else if (spaceNumber == 4) return createPropertySpace("Baltic Ave",60,4,0);
 		else if (spaceNumber == 6) return createRailroadSpace("Shortline");

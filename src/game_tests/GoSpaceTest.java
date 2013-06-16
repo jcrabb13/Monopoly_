@@ -40,7 +40,8 @@ public class GoSpaceTest {
 		
 		for (int i=0; i<39; i++) testPlayer.moveOnePosition();
 
-		testPlayer.takeATurn();
+		testPlayer.moveOnePosition();
+		testPlayer.preformPassAction();
 		
 		assertEquals(1700, testPlayer.getMyMoney());		
 	}
