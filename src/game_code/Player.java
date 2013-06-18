@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class Player {
 	static Random randomGenerator = new Random(System.nanoTime());
+	private int previousDiceRoll = 0;
 	
 	private Space currentPosition;
 	private int myMoney;
@@ -14,20 +15,21 @@ public class Player {
 	}	
 		
 	public void takeATurn() {
-		int sumOfTwoRolls = getDiceRoll() + getDiceRoll();
+		rollTheDice();
+		int sumOfTwoRolls = getDiceRoll();
 
 		for(int i=0; i<sumOfTwoRolls; i++) {
 			this.moveOnePosition();
-			if (i != sumOfTwoRolls-1) this.preformPassAction();
+			if (i != sumOfTwoRolls-1) this.performPassAction();
 		}	
 		
-		this.preformLandAction();
+		this.performLandAction();
 	}
 		
 	
-	public void preformLandAction() {currentPosition.interactWithLandAction(this);}
+	public void performLandAction() {currentPosition.interactWithLandAction(this);}
 	
-	public void preformPassAction() {currentPosition.interactWithPassAction(this);}
+	public void performPassAction() {currentPosition.interactWithPassAction(this);}
 	
 	public void moveOnePosition() {currentPosition = currentPosition.getNextSpace();}
 	
@@ -37,5 +39,7 @@ public class Player {
 	
 	public Space getCurrentPosition() {return currentPosition;}	
 	
-	public int getDiceRoll() {return (randomGenerator.nextInt(6) + 1);}
+	private void rollTheDice() {previousDiceRoll = (randomGenerator.nextInt(6) + 1) + (randomGenerator.nextInt(6) + 1);}
+	
+	private int getDiceRoll() {return previousDiceRoll;} 
 }

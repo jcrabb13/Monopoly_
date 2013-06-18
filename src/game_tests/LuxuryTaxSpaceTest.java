@@ -44,7 +44,7 @@ public class LuxuryTaxSpaceTest {
 		Player testPlayer = new Player(startSpace);
 		
 		testPlayer.moveOnePosition();
-		testPlayer.preformLandAction();
+		testPlayer.performLandAction();
 		
 		assertEquals(1425, testPlayer.getMyMoney());		
 	}

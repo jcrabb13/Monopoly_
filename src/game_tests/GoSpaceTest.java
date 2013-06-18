@@ -28,7 +28,7 @@ public class GoSpaceTest {
 		for (int i=0; i<39; i++) testPlayer.moveOnePosition();
 
 		testPlayer.moveOnePosition();
-		testPlayer.preformLandAction();
+		testPlayer.performLandAction();
 		
 		assertEquals(1700, testPlayer.getMyMoney());		
 	}
@@ -41,7 +41,7 @@ public class GoSpaceTest {
 		for (int i=0; i<39; i++) testPlayer.moveOnePosition();
 
 		testPlayer.moveOnePosition();
-		testPlayer.preformPassAction();
+		testPlayer.performPassAction();
 		
 		assertEquals(1700, testPlayer.getMyMoney());		
 	}

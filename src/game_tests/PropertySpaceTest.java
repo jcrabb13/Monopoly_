@@ -34,7 +34,7 @@ public class PropertySpaceTest {
 		PropertySpace testSpace = new PropertySpace("Test Ave.", 100, 20);
 		Player player = new Player(testSpace);
 		
-		player.preformLandAction();
+		player.performLandAction();
 		
 		assertEquals(1400, player.getMyMoney());
 	}
@@ -51,8 +51,8 @@ public class PropertySpaceTest {
 		Player owner = new Player(testSpace);
 		Player renter = new Player(testSpace);
 		
-		owner.preformLandAction();
-		renter.preformLandAction();
+		owner.performLandAction();
+		renter.performLandAction();
 		
 		assertEquals(1480, renter.getMyMoney());
 		assertEquals(1420, owner.getMyMoney());
@@ -71,10 +71,10 @@ public class PropertySpaceTest {
 		Player owner = new Player(testSpace1);
 		Player renter = new Player(testSpace1);
 		
-		owner.preformLandAction();
+		owner.performLandAction();
 		owner.moveOnePosition();
-		owner.preformLandAction();
-		renter.preformLandAction();
+		owner.performLandAction();
+		renter.performLandAction();
 		
 		assertEquals(1460, renter.getMyMoney());
 		assertEquals(1340, owner.getMyMoney());
