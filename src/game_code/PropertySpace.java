@@ -4,8 +4,8 @@ public class PropertySpace extends OwnableSpace{
 	private int rentCost;
 	
 	public PropertySpace(String propertyName, int propertyCost, int rentCost) {
-		this.propertyName = propertyName;
-		this.propertyCost = propertyCost;
+		this.spaceName = propertyName;
+		this.spaceCost = propertyCost;
 		this.rentCost = rentCost;
 	}
 		
@@ -13,7 +13,7 @@ public class PropertySpace extends OwnableSpace{
 		int totalRent = rentCost;
 		if (getTotalGroupSpacesOwned() == this.mySpaceGroup.size()) totalRent = totalRent*2;
 		player.changeMyMoney(-1*totalRent);
-		propertyOwner.changeMyMoney(totalRent);
+		spaceOwner.changeMyMoney(totalRent);
 	}	
 
 }
