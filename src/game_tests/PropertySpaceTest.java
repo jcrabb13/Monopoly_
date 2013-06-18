@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 import game_code.Board;
+import game_code.OwnableSpace;
 import game_code.Space;
 import game_code.Player;
 import game_code.PropertySpace;
@@ -43,7 +44,7 @@ public class PropertySpaceTest {
 	public void testGameRentOnSpaceWithoutWholeGroup() {
 		PropertySpace testSpace = new PropertySpace("Test Ave", 100, 20);
 		PropertySpace otherSpace = new PropertySpace("Test Dr", 100, 50);
-		ArrayList<PropertySpace> mySpaceGroup = new ArrayList<PropertySpace>();
+		ArrayList<OwnableSpace> mySpaceGroup = new ArrayList<OwnableSpace>();
 		mySpaceGroup.add(testSpace);
 		mySpaceGroup.add(otherSpace);
 		testSpace.setGroup(mySpaceGroup);
@@ -63,7 +64,7 @@ public class PropertySpaceTest {
 		PropertySpace testSpace1 = new PropertySpace("Test Ave", 100, 20);
 		PropertySpace testSpace2 = new PropertySpace("Test Dr", 100, 50);
 		testSpace1.setNextSpace(testSpace2);
-		ArrayList<PropertySpace> mySpaceGroup = new ArrayList<PropertySpace>();
+		ArrayList<OwnableSpace> mySpaceGroup = new ArrayList<OwnableSpace>();
 		mySpaceGroup.add(testSpace1);
 		mySpaceGroup.add(testSpace2);
 		testSpace1.setGroup(mySpaceGroup);

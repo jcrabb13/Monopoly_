@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Board {
 	private Space startSpace;
-	private ArrayList<RailroadSpace> railroadSpaces = new ArrayList<RailroadSpace>();
-	private ArrayList<ArrayList<PropertySpace>> propertyGroups = new ArrayList<ArrayList<PropertySpace>>();
+	private ArrayList<OwnableSpace> railroadSpaces = new ArrayList<OwnableSpace>();
+	private ArrayList<ArrayList<OwnableSpace>> propertyGroups = new ArrayList<ArrayList<OwnableSpace>>();
 	
 	public static final int BOARD_SIZE = 40;
 	
@@ -73,12 +73,12 @@ public class Board {
 	}
 	
 	private void setSpaceGroupOfSpaces() {
-		for(RailroadSpace space : railroadSpaces) {
+		for(OwnableSpace space : railroadSpaces) {
 			space.setGroup(railroadSpaces);
 		}
 		
-		for(ArrayList<PropertySpace> groupList : propertyGroups) {
-			for(PropertySpace space : groupList) {
+		for(ArrayList<OwnableSpace> groupList : propertyGroups) {
+			for(OwnableSpace space : groupList) {
 				space.setGroup(groupList);
 			}
 		}
@@ -87,7 +87,7 @@ public class Board {
 	
 	private void initializePropertyArrayList() {
 		for (int i=0; i<8; i++) {
-			propertyGroups.add(new ArrayList<PropertySpace>());
+			propertyGroups.add(new ArrayList<OwnableSpace>());
 		}
 	}
 	

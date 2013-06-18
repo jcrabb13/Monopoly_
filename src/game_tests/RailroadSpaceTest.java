@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import game_code.Board;
 import game_code.GeneralSpace;
 import game_code.MonopolyGame;
+import game_code.OwnableSpace;
 import game_code.Player;
 import game_code.RailroadSpace;
 import game_code.Space;
@@ -64,7 +65,7 @@ public class RailroadSpaceTest {
 	@Test
 	public void testMonopolyGamePayingRentRailroad() {
 		RailroadSpace testSpace = new RailroadSpace("Shortline");
-		ArrayList<RailroadSpace> railroadGroup = new ArrayList<RailroadSpace>();
+		ArrayList<OwnableSpace> railroadGroup = new ArrayList<OwnableSpace>();
 		railroadGroup.add(testSpace);
 		testSpace.setGroup(railroadGroup);
 		Player owner = new Player(new GeneralSpace());
@@ -94,7 +95,7 @@ public class RailroadSpaceTest {
 		RailroadSpace testRailroadOne = new RailroadSpace("Shortline");
 		RailroadSpace testRailroadTwo = new RailroadSpace("B&O");
 		
-		ArrayList<RailroadSpace> railroadGroup = new ArrayList<RailroadSpace>();
+		ArrayList<OwnableSpace> railroadGroup = new ArrayList<OwnableSpace>();
 		railroadGroup.add(testRailroadOne);
 		railroadGroup.add(testRailroadTwo);
 		testRailroadOne.setGroup(railroadGroup);
