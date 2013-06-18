@@ -8,6 +8,11 @@ public abstract class OwnableSpace extends GeneralSpace{
 	protected int spaceCost;
 	protected String spaceName;
 	
+	protected OwnableSpace(String spaceName, int spaceCost) {
+		this.spaceCost = spaceCost;
+		this.spaceName = spaceName;
+	}
+	
 	protected abstract void chargePlayerRent(Player player);
 	
 	private final void buyThisProperty(Player player) {

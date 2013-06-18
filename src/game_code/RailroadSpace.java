@@ -2,9 +2,8 @@ package game_code;
 
 public class RailroadSpace extends OwnableSpace{
 	
-	public RailroadSpace(String propertyName) {
-		this.spaceName = propertyName;
-		this.spaceCost = 200;
+	public RailroadSpace(String railroadName) {
+		super(railroadName, 200);
 	}
 	
 	protected void chargePlayerRent(Player player) {
