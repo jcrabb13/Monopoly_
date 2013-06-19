@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public abstract class OwnableSpace extends GeneralSpace{
 	protected ArrayList<OwnableSpace> mySpaceGroup;	
 	protected Player spaceOwner;
-	protected int spaceCost;
-	protected String spaceName;
+	private int spaceCost;
+	private String spaceName;
 	
 	protected OwnableSpace(String spaceName, int spaceCost) {
 		this.spaceCost = spaceCost;

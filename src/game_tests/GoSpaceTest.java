@@ -8,6 +8,7 @@ import org.junit.Test;
 public class GoSpaceTest {
 	MonopolyGame testGame;
 	Die testGameDie;
+	
 	@Before
 	public void setUp() throws Exception {
 		testGameDie = new LoadedDie(4);
