@@ -3,6 +3,7 @@ package game_tests;
 import static org.junit.Assert.*;
 import java.util.ArrayList;
 import game_code.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,7 +12,7 @@ public class PlayerTest {
 	ArrayList<Player> listOfPlayers;
 	@Before
 	public void setUp() throws Exception {
-		testGame = new MonopolyGame(2);
+		testGame = new MonopolyGame(2, new LoadedDie(4));
 		listOfPlayers = testGame.getListOfPlayers();
 	}
 	

@@ -11,9 +11,10 @@ import org.junit.Test;
 public class IncomeTaxSpaceTest {
 	MonopolyGame testGame;
 	ArrayList<Player> listOfPlayers;
+	
 	@Before
 	public void setUp() throws Exception {
-		testGame = new MonopolyGame(2);
+		testGame = new MonopolyGame(2, new LoadedDie(4));
 		listOfPlayers = testGame.getListOfPlayers();
 	}
 

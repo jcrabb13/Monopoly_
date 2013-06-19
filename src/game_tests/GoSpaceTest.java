@@ -7,10 +7,11 @@ import org.junit.Test;
 
 public class GoSpaceTest {
 	MonopolyGame testGame;
-	
+	Die testGameDie;
 	@Before
 	public void setUp() throws Exception {
-		testGame = new MonopolyGame(2);
+		testGameDie = new LoadedDie(4);
+		testGame = new MonopolyGame(2, testGameDie);
 	}
 	
 	@Test
@@ -23,7 +24,7 @@ public class GoSpaceTest {
 	@Test
 	public void testLandOnGoSpaceGivesMoney() { 
 		Board testGameBoard = new Board();
-		Player testPlayer = new Player(testGameBoard.getInitialSpace());
+		Player testPlayer = new Player(testGameBoard.getInitialSpace(), testGameDie);
 		
 		for (int i=0; i<39; i++) testPlayer.moveOnePosition();
 
@@ -36,7 +37,7 @@ public class GoSpaceTest {
 	@Test
 	public void testPassingGoSpaceGivesMoney() { 
 		Board testGameBoard = new Board();
-		Player testPlayer = new Player(testGameBoard.getInitialSpace());
+		Player testPlayer = new Player(testGameBoard.getInitialSpace(), testGameDie);
 		
 		for (int i=0; i<39; i++) testPlayer.moveOnePosition();
 

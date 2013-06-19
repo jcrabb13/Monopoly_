@@ -4,9 +4,11 @@ import java.util.ArrayList;
 public class MonopolyGame {	
 	private ArrayList<Player> listOfPlayers;
 	private Board gameBoard;
+	private Die gameDie;
 	
-	public MonopolyGame(int numberOfPlayers) {	
+	public MonopolyGame(int numberOfPlayers, Die gameDie) {	
 		gameBoard = new Board();
+		this.gameDie = gameDie;
 		createPlayers(numberOfPlayers);			
 	}
 	
@@ -14,7 +16,7 @@ public class MonopolyGame {
 		listOfPlayers = new ArrayList<Player>(numberOfPlayers);
 		
 		for(int i=0; i<numberOfPlayers; i++) {
-			listOfPlayers.add(i, new Player(gameBoard.getInitialSpace()));
+			listOfPlayers.add(i, new Player(gameBoard.getInitialSpace(), gameDie));
 		}
 	}
 	

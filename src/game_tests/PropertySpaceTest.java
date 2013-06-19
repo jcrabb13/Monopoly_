@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 import game_code.Board;
+import game_code.LoadedDie;
 import game_code.OwnableSpace;
 import game_code.Space;
 import game_code.Player;
@@ -33,7 +34,7 @@ public class PropertySpaceTest {
 	@Test
 	public void testGameBuyingASpace() {
 		PropertySpace testSpace = new PropertySpace("Test Ave.", 100, 20);
-		Player player = new Player(testSpace);
+		Player player = new Player(testSpace, new LoadedDie(4));
 		
 		player.performLandAction();
 		
@@ -49,8 +50,8 @@ public class PropertySpaceTest {
 		mySpaceGroup.add(otherSpace);
 		testSpace.setGroup(mySpaceGroup);
 	
-		Player owner = new Player(testSpace);
-		Player renter = new Player(testSpace);
+		Player owner = new Player(testSpace, new LoadedDie(4));
+		Player renter = new Player(testSpace, new LoadedDie(4));
 		
 		owner.performLandAction();
 		renter.performLandAction();
@@ -69,8 +70,8 @@ public class PropertySpaceTest {
 		mySpaceGroup.add(testSpace2);
 		testSpace1.setGroup(mySpaceGroup);
 	
-		Player owner = new Player(testSpace1);
-		Player renter = new Player(testSpace1);
+		Player owner = new Player(testSpace1, new LoadedDie(4));
+		Player renter = new Player(testSpace1, new LoadedDie(4));
 		
 		owner.performLandAction();
 		owner.moveOnePosition();

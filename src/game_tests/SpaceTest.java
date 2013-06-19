@@ -2,6 +2,7 @@ package game_tests;
 
 import static org.junit.Assert.*;
 import game_code.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,7 +11,7 @@ public class SpaceTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		testGame = new MonopolyGame(2);
+		testGame = new MonopolyGame(2, new LoadedDie(4));
 	}
 	
 	@Test

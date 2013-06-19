@@ -11,7 +11,7 @@ public class LuxuryTaxSpaceTest {
 	ArrayList<Player> listOfPlayers;
 	@Before
 	public void setUp() throws Exception {
-		testGame = new MonopolyGame(2);
+		testGame = new MonopolyGame(2, new LoadedDie(4));
 		listOfPlayers = testGame.getListOfPlayers();
 	}
 	
@@ -41,7 +41,7 @@ public class LuxuryTaxSpaceTest {
 		GeneralSpace startSpace = new GeneralSpace();
 		LuxuryTaxSpace testSpace = new LuxuryTaxSpace();
 		startSpace.setNextSpace(testSpace);
-		Player testPlayer = new Player(startSpace);
+		Player testPlayer = new Player(startSpace, new LoadedDie(4));
 		
 		testPlayer.moveOnePosition();
 		testPlayer.performLandAction();

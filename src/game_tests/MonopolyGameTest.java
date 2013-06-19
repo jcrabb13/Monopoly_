@@ -13,7 +13,7 @@ public class MonopolyGameTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		testGame = new MonopolyGame(2);
+		testGame = new MonopolyGame(2, new LoadedDie(4));
 		listOfPlayers = testGame.getListOfPlayers();
 	}
 
@@ -29,8 +29,8 @@ public class MonopolyGameTest {
 	
 	@Test
 	public void testRunTheGame() { 
-		MonopolyGame gameToTestOne = new MonopolyGame(2);
-		MonopolyGame gameToTestTwo = new MonopolyGame(2);
+		MonopolyGame gameToTestOne = new MonopolyGame(2, new RegularDie());
+		MonopolyGame gameToTestTwo = new MonopolyGame(2, new RegularDie());
 		
 		gameToTestOne.runTheGame(10);
 		gameToTestTwo.runTheGame(10);

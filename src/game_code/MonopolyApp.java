@@ -4,9 +4,11 @@ public class MonopolyApp {
 	
 	public static void main(String[] args) {
 		int numberOfPlayers = 	3;
-		int numberOfRounds = 	20;		
+		int numberOfRounds = 	20;
 		
-		MonopolyGame gameOne = new MonopolyGame(numberOfPlayers);
+		Die gameDie = new RegularDie();
+		
+		MonopolyGame gameOne = new MonopolyGame(numberOfPlayers, gameDie);
 		gameOne.runTheGame(numberOfRounds);
 	}
 }

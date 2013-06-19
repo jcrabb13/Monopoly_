@@ -1,17 +1,16 @@
 package game_code;
 
-import java.util.Random;
-
 public class Player {
-	static Random randomGenerator = new Random(System.nanoTime());
-	private int previousDiceRoll = 0;
+	private Die gameDie;
+	private int diceTotal;
 	
 	private Space currentPosition;
 	private int myMoney;
 	
-	public Player(Space currentPosition) {
+	public Player(Space currentPosition, Die gameDie) {
 		this.currentPosition = currentPosition;
 		myMoney = 1500;
+		this.gameDie = gameDie;
 	}	
 		
 	public void takeATurn() {
@@ -39,7 +38,13 @@ public class Player {
 	
 	public Space getCurrentPosition() {return currentPosition;}	
 	
-	private void rollTheDice() {previousDiceRoll = (randomGenerator.nextInt(6) + 1) + (randomGenerator.nextInt(6) + 1);}
+	private void rollTheDice() {
+		diceTotal = 0;
+		gameDie.rollDie();
+		diceTotal += gameDie.getLastRollValue();
+		gameDie.rollDie();
+		diceTotal += gameDie.getLastRollValue();
+	}
 	
-	private int getDiceRoll() {return previousDiceRoll;} 
+	private int getDiceRoll() {return diceTotal;} 
 }

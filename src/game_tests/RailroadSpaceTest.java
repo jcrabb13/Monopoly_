@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import game_code.Board;
 import game_code.GeneralSpace;
+import game_code.LoadedDie;
 import game_code.MonopolyGame;
 import game_code.OwnableSpace;
 import game_code.Player;
@@ -18,7 +19,7 @@ public class RailroadSpaceTest {
 	
 	@Test
 	public void testMonopolyGameHasFourRailroads() {
-		MonopolyGame game = new MonopolyGame(2);
+		MonopolyGame game = new MonopolyGame(2, new LoadedDie(4));
 		Space currentSpace = game.getInitialSpace();
 		
 		int numberOfRailroads = 0;
@@ -34,7 +35,7 @@ public class RailroadSpaceTest {
 	@Test
 	public void testMonopolyGameBuyingRailroadSetsOwner() {
 		RailroadSpace testSpace = new RailroadSpace("Shortline");
-		Player testPlayer = new Player(new GeneralSpace());
+		Player testPlayer = new Player(new GeneralSpace(), new LoadedDie(4));
 		
 		testSpace.interactWithLandAction(testPlayer);
 		
@@ -44,7 +45,7 @@ public class RailroadSpaceTest {
 	@Test
 	public void testMonopolyGameBuyingRailroadNotEnoughMoney() {
 		RailroadSpace testSpace = new RailroadSpace("Shortline");
-		Player testPlayer = new Player(new GeneralSpace());
+		Player testPlayer = new Player(new GeneralSpace(), new LoadedDie(4));
 		testPlayer.changeMyMoney(-1400);
 		
 		testSpace.interactWithLandAction(testPlayer);
@@ -55,7 +56,7 @@ public class RailroadSpaceTest {
 	@Test
 	public void testMonopolyGameBuyingRailroadChargesMoney() {
 		RailroadSpace testSpace = new RailroadSpace("Shortline");
-		Player testPlayer = new Player(new GeneralSpace());
+		Player testPlayer = new Player(new GeneralSpace(), new LoadedDie(4));
 		
 		testSpace.interactWithLandAction(testPlayer);
 		
@@ -68,8 +69,8 @@ public class RailroadSpaceTest {
 		ArrayList<OwnableSpace> railroadGroup = new ArrayList<OwnableSpace>();
 		railroadGroup.add(testSpace);
 		testSpace.setGroup(railroadGroup);
-		Player owner = new Player(new GeneralSpace());
-		Player renter = new Player(new GeneralSpace());
+		Player owner = new Player(new GeneralSpace(), new LoadedDie(4));
+		Player renter = new Player(new GeneralSpace(), new LoadedDie(4));
 		
 		testSpace.interactWithLandAction(owner);
 		testSpace.interactWithLandAction(renter);
@@ -82,7 +83,7 @@ public class RailroadSpaceTest {
 		RailroadSpace testRailroadOne = new RailroadSpace("Shortline");
 		RailroadSpace testRailroadTwo = new RailroadSpace("B&O");
 		
-		Player owner = new Player(new GeneralSpace());
+		Player owner = new Player(new GeneralSpace(), new LoadedDie(4));
 		
 		testRailroadOne.interactWithLandAction(owner);
 		testRailroadTwo.interactWithLandAction(owner);
@@ -101,8 +102,8 @@ public class RailroadSpaceTest {
 		testRailroadOne.setGroup(railroadGroup);
 		testRailroadTwo.setGroup(railroadGroup);
 		
-		Player owner = new Player(new GeneralSpace());;
-		Player renter = new Player(new GeneralSpace());
+		Player owner = new Player(new GeneralSpace(), new LoadedDie(4));;
+		Player renter = new Player(new GeneralSpace(), new LoadedDie(4));
 		
 		testRailroadOne.interactWithLandAction(owner);
 		testRailroadTwo.interactWithLandAction(owner);
